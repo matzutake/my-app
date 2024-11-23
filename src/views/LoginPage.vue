@@ -1,15 +1,11 @@
 <template>
-    <div class="login-page">
-    </div>
+  <div class="login-page"></div>
 </template>
 
 <script>
 export default {
-        name: 'LoginPage',
-        
-    }
+  name: 'LoginPage'
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
