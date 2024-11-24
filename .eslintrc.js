@@ -1,18 +1,38 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
-  extends: [
-    'plugin:vue/essential',
-    'standard',
-    'plugin:vue/recommended',
-    'plugin:prettier/recommended'
-  ],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module'
-  },
+  root: true,
+  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', 'plugin:prettier/recommended'],
   plugins: ['vue'],
-  rules: {}
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {},
+      {
+        usePrettierrc: true
+      }
+    ],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: {
+          max: 10
+        },
+        multiline: {
+          max: 15
+        }
+      }
+    ],
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['Layout']
+      }
+    ],
+    'vue/v-on-event-hyphenation': [
+      'error',
+      'never',
+      {
+        autofix: true
+      }
+    ]
+  }
 }
