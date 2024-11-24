@@ -1,20 +1,30 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true" v-bind="$attrs">
-    <use :xlink:href="iconPath" />
+  <svg :class="svgClass" aria-hidden="true" :width="width" :height="height" :viewBox="viewBox">
+    <component :is="icon" />
   </svg>
 </template>
 
 <script>
+import icons from '@/assets/icons'
+
 export default {
-  name: 'SvgIcon',
+  name: 'SvgIcons',
   props: {
     name: {
       type: String,
       required: true
     },
-    prefix: {
+    className: {
       type: String,
-      default: 'icon'
+      default: ''
+    },
+    width: {
+      type: String,
+      default: '24'
+    },
+    height: {
+      type: String,
+      default: '24'
     },
     viewBox: {
       type: String,
@@ -22,23 +32,12 @@ export default {
     }
   },
   computed: {
-    iconPath() {
-      return `#${this.prefix}-${this.name}`
-    },
     svgClass() {
-      return `svg-icon ${this.prefix}-${this.name}`
+      return `svg-icon ${this.className}`
+    },
+    icon() {
+      return icons[this.name]
     }
   }
 }
 </script>
-
-<style scoped>
-.svg-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
-</style>

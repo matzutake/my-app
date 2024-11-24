@@ -1,6 +1,7 @@
-import { defineConfig } from '@vue/cli-service'
+/* eslint-disable no-undef */
+const { defineConfig } = require('@vue/cli-service')
 
-export default defineConfig({
+module.exports = defineConfig({
   transpileDependencies: true,
   css: {
     loaderOptions: {
@@ -10,5 +11,28 @@ export default defineConfig({
         }
       }
     }
+  },
+  chainWebpack: (config) => {
+    const svgRule = config.module.rule('svg')
+
+    svgRule.uses.clear()
+
+    svgRule
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .options({
+        svgo: {
+          plugins: [{ removeViewBox: false }, { removeDimensions: true }]
+        }
+      })
+      .end()
+      .use('svg-transform-loader')
+      .loader('svg-transform-loader')
+      .options({
+        svg: {
+          docTitle: 'Icons',
+          root: '#icons'
+        }
+      })
   }
 })

@@ -1,11 +1,16 @@
 <template>
   <div class="text-input">
-    <SvgIcon name="phone" />
-    <input type="text" class="text-input__input" required />
+    <slot name="left-icon" />
 
-    <div class="text-input__label">
-      <slot name="label" />
+    <div class="text-input__inner">
+      <input :type="type === 'password' ? 'password' : 'text'" class="text-input__input" required />
+
+      <div class="text-input__label">
+        <slot name="label" />
+      </div>
     </div>
+
+    <slot name="right-icon" />
   </div>
 </template>
 
@@ -27,12 +32,12 @@ export default {
 
 <style lang="sass" scoped>
 .text-input
-  position: relative
   display: flex
-  flex-direction: column
   border-bottom: 1px solid #CCCCCC
-  padding: 8px 4px
+  padding: 6px 4px
 
+  &__inner
+    position: relative
 
   &__label
     color: #999999
@@ -40,7 +45,7 @@ export default {
     line-height: 20px
     position: absolute
     pointer-events: none
-    top: 50%
+    top: 25%
     transition: 200ms
 
   &__input
@@ -52,11 +57,11 @@ export default {
     caret-color: #50B053
 
     &:focus + .text-input__label
-      top: 0
+      top: -100%
       color: #50B053
       font-size: 12px
 
     &:valid + .text-input__label
-      top: 0
+      top: -100%
       font-size: 12px
 </style>

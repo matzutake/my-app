@@ -6,11 +6,20 @@
 
     <main class="auth-form__main">
       <TextInput type="phone">
+        <template #left-icon>
+          <SvgIcon name="phone" class="phone-icon" />
+        </template>
         <template #label>Логин или Телефон</template>
       </TextInput>
 
       <TextInput type="password">
+        <template #left-icon>
+          <SvgIcon name="block" class="block-icon" />
+        </template>
         <template #label>Пароль</template>
+        <template #right-icon>
+          <SvgIcon name="eye" class="eye-icon" />
+        </template>
       </TextInput>
     </main>
 
@@ -39,6 +48,7 @@ export default {
   height: 290px
   display: flex
   flex-direction: column
+  justify-content: space-between
   padding: 20px 16px
 
   &__header
@@ -60,10 +70,12 @@ export default {
   &__main
     display: flex
     flex-direction: column
-    gap: 8px
+    padding-top: 16px
+    flex: 1
+    gap: 16px
+
 
   &__footer
     display: flex
     justify-content: center
-    margin-top: auto
 </style>

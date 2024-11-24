@@ -12,12 +12,10 @@ import '@/assets/css/main.css'
 import TextInput from '@/components/UI/TextInput.vue'
 import CommonButton from '@/components/UI/CommonButton.vue'
 import SvgIcon from '@/components/UI/SvgIcon.vue'
-import SvgIconsCollection from '@/components/UI/SvgIconsCollection.vue'
 
 Vue.component('TextInput', TextInput)
 Vue.component('CommonButton', CommonButton)
 Vue.component('SvgIcon', SvgIcon)
-Vue.component('SvgIconsCollection', SvgIconsCollection)
 
 Vue.config.productionTip = false
 
